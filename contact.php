@@ -94,9 +94,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $mail->Port       = 587;                                   // TCP port to connect to (for Gmail it's 587)
 
                 // Recipients
-                $mail->setFrom('your-email@gmail.com', 'Your Name');       // Sender's email
-                $mail->addAddress($_POST['email'], $_POST['name']); // Recipient's email
-
+                $mail->setFrom($_POST['email'], $_POST['name']);       // Sender's email
+                $mail->addAddress('harshiitthoon25@gmail.com', 'Harshit'); // Recipient's email
+                $mail->addReplyTo($_POST['email'], $_POST['name']);
+              
                 // Content
                 $mail->isHTML(true);                                      // Set email format to HTML
                 $mail->Subject = 'New Message from Contact Form';
