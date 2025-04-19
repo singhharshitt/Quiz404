@@ -7,9 +7,8 @@ node_modules/
 # Ignore Composer vendor directory (for PHP projects)
 vendor/
 
-# Ignore specific PHP file
-something.php
 
+assets/
 # Optional: macOS and Windows system files
 .DS_Store
 Thumbs.db

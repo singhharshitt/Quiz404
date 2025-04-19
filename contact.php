@@ -4,9 +4,12 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+
 // Include the Composer autoloader
 require 'vendor/autoload.php';
 
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 // Backend: Handle form submission
 $success = "";
 $error = "";
@@ -83,8 +86,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $mail->SMTPAuth   = true;                                  // Enable SMTP authentication
                 $mail->Username   = 'harshiitthoon25@gmail.com';                // SMTP username (your Gmail)
                 // $mail->Password   = getenv('MAIL_PASSWORD');
-                $config = include('something.php');
-                $mail->Password = $config['MAIL_PASSWORD'];
+                // $config = include('something.php');
+                // $mail->Password = $config['MAIL_PASSWORD'];
+                $mail->Password = $_ENV['MAIL_PASSWORD'];
                    // SMTP password (app-specific password)
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;        // Enable TLS encryption
                 $mail->Port       = 587;                                   // TCP port to connect to (for Gmail it's 587)
